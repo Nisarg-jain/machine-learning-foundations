@@ -1,28 +1,30 @@
-# 100 Days of Machine Learning
+# ML Foundation: 100 Days of Machine Learning
 
-Master repository documenting concepts, math derivations, data preprocessing pipelines, and algorithm implementations from the **CampusX: 100 Days of Machine Learning** playlist.
-
----
-
-## Progress Roadmap
-
-| Day | Topic | Type | Status |
-|:---:|:---|:---:|:---:|
-| 01 | [What is Machine Learning?](#day-01-what-is-machine-learning) | Theory | Completed |
-| 02 | AI vs ML vs DL vs Data Science | Theory | Up Next |
-| 03 | Machine Learning Development Lifecycle | Theory | Pending |
-| ... | Data Preprocessing & EDA | Practical | Pending |
+Structured implementation code, mathematical foundations, production workflows, and practical experiments following CampusX's *100 Days of Machine Learning* roadmap. Built entirely within an isolated local virtual environment using VS Code and Git version control.
 
 ---
 
-## Detailed Notes & Logs
+## 🛠️ Environment & Architecture
 
-### Day 01: What is Machine Learning?
-- **Core Concept:** Traditional programming maps $\text{Input} + \text{Logic} \rightarrow \text{Output}$, whereas Machine Learning discovers rules: $\text{Input} + \text{Output} \rightarrow \text{Model}$.
-- **Why ML Matters:**
-  - Solves problems too complex for deterministic `if/else` rules (e.g., Computer Vision across diverse object classes).
-  - Handles dynamic, evolving data patterns (e.g., email spam detection).
-  - Data mining for hidden relationships in massive datasets.
-- **Catalysts for Modern Growth:** The post-2010 explosion of digitized data paired with accessible parallel compute (GPUs/TPUs).
+- **Runtime:** Python 3.14 (`.venv` virtual environment)
+- **Primary IDE:** Visual Studio Code
+- **Core Libraries:** `numpy`, `pandas`, `scikit-learn`, `matplotlib`, `mlxtend`, `requests`, `beautifulsoup4`, `ipykernel`, `joblib`
+- **Workflow Standards:** Isolated package management, modular scripts, Jupyter interactive kernels, and Git commit tracking for daily progress.
 
 ---
+
+## 🗺️ Roadmap & Progress Tracker
+
+| Day / Lecture | Topic | Core Focus / Deliverables | Status | Artifacts / Scripts |
+| :---: | :--- | :--- | :---: | :--- |
+| **01–08** | **ML Foundations & Taxonomy** | Instance vs. Model-based learning, Batch vs. Online, ML challenges & bottlenecks | Completed | `instance_vs_model.py` |
+| **09** | **MLDLC & Production Monitoring** | Full lifecycle stages, covariate drift, concept drift simulation, model saving | Completed | `drift_detection_demo.py` |
+| **10** | **Data Science Job Roles & Ecosystem** | Data Engineer vs. Analyst vs. Scientist vs. MLOps Engineer roles & tech stacks | Completed | Architectural notes |
+| **11** | **What are Tensors?** | 0D scalars to 5D video tensors, axis manipulation, rank, shape, and raw memory footprint calculations | Completed | `tensor_fundamentals.py` |
+| **12** | **Environment Configuration** | Native VS Code `.venv` setup with `ipykernel` integration | Completed | `.venv` configuration |
+| **13** | **First End-to-End Toy Project** | Full placement prediction pipeline: EDA, train/test split, data leakage avoidance, scaling, Logistic Regression, decision boundaries, artifact serialization | Completed | `first_toy_project.ipynb`<br>`placement.csv`<br>`model.pkl`<br>`scaler.pkl`<br>`decision_boundary.png` |
+| **14** | **Data Gathering: REST APIs** | HTTP protocols, JSON payload normalization, status handling, query pagination | Completed | `data_gathering_pipeline.py` |
+| **15** | **Data Gathering: Web Scraping** | HTML DOM parsing, BeautifulSoup selectors, User-Agent header spoofing | Completed | `data_gathering_pipeline.py`<br>`scraped_quotes.csv` |
+| **16** | **Ingestion with `pd.read_csv()`** | Custom delimiters, character encodings (`utf-8`, `latin-1`), malformed rows, downcasting, and memory-safe chunking | Completed | `csv_parameters_demo.py` |
+| **17** | **Data Understanding & Profiling** | 8-step data audit: shape, cardinality, missingness reports, duplicate filtering, distribution skew, and target correlation | Completed | `data_understanding_audit.py` |
+| **18** | **Univariate Analysis** | Histograms
