@@ -1,30 +1,40 @@
-# ML Foundation: 100 Days of Machine Learning
-
-Structured implementation code, mathematical foundations, production workflows, and practical experiments following CampusX's *100 Days of Machine Learning* roadmap. Built entirely within an isolated local virtual environment using VS Code and Git version control.
+# Feature Engineering: Principles, Frameworks, and Core Pillars
 
 ---
 
-## 🛠️ Environment & Architecture
-
-- **Runtime:** Python 3.14 (`.venv` virtual environment)
-- **Primary IDE:** Visual Studio Code
-- **Core Libraries:** `numpy`, `pandas`, `scikit-learn`, `matplotlib`, `mlxtend`, `requests`, `beautifulsoup4`, `ipykernel`, `joblib`
-- **Workflow Standards:** Isolated package management, modular scripts, Jupyter interactive kernels, and Git commit tracking for daily progress.
+## 1. Overview & Mathematical Necessity
+* **Definition:** The process of applying domain knowledge and statistical transformations to raw data to expose clearer signals to machine learning algorithms.
+* **Core Rule:** $\text{Simple Algorithm} + \text{Engineered Features} \gg \text{Complex Algorithm} + \text{Raw Features}$.
+* Machine learning algorithms optimize mathematical cost functions over numeric feature spaces. They fail or degrade when fed unhandled missing values, raw string categoricals, multi-scale coordinate axes, or redundant uninformative dimensions.
 
 ---
 
-## 🗺️ Roadmap & Progress Tracker
+## 2. The Four Pillars of Feature Engineering
 
-| Day / Lecture | Topic | Core Focus / Deliverables | Status | Artifacts / Scripts |
-| :---: | :--- | :--- | :---: | :--- |
-| **01–08** | **ML Foundations & Taxonomy** | Instance vs. Model-based learning, Batch vs. Online, ML challenges & bottlenecks | Completed | `instance_vs_model.py` |
-| **09** | **MLDLC & Production Monitoring** | Full lifecycle stages, covariate drift, concept drift simulation, model saving | Completed | `drift_detection_demo.py` |
-| **10** | **Data Science Job Roles & Ecosystem** | Data Engineer vs. Analyst vs. Scientist vs. MLOps Engineer roles & tech stacks | Completed | Architectural notes |
-| **11** | **What are Tensors?** | 0D scalars to 5D video tensors, axis manipulation, rank, shape, and raw memory footprint calculations | Completed | `tensor_fundamentals.py` |
-| **12** | **Environment Configuration** | Native VS Code `.venv` setup with `ipykernel` integration | Completed | `.venv` configuration |
-| **13** | **First End-to-End Toy Project** | Full placement prediction pipeline: EDA, train/test split, data leakage avoidance, scaling, Logistic Regression, decision boundaries, artifact serialization | Completed | `first_toy_project.ipynb`<br>`placement.csv`<br>`model.pkl`<br>`scaler.pkl`<br>`decision_boundary.png` |
-| **14** | **Data Gathering: REST APIs** | HTTP protocols, JSON payload normalization, status handling, query pagination | Completed | `data_gathering_pipeline.py` |
-| **15** | **Data Gathering: Web Scraping** | HTML DOM parsing, BeautifulSoup selectors, User-Agent header spoofing | Completed | `data_gathering_pipeline.py`<br>`scraped_quotes.csv` |
-| **16** | **Ingestion with `pd.read_csv()`** | Custom delimiters, character encodings (`utf-8`, `latin-1`), malformed rows, downcasting, and memory-safe chunking | Completed | `csv_parameters_demo.py` |
-| **17** | **Data Understanding & Profiling** | 8-step data audit: shape, cardinality, missingness reports, duplicate filtering, distribution skew, and target correlation | Completed | `data_understanding_audit.py` |
-| **18** | **Univariate Analysis** | Histograms
+### Pillar 1: Feature Transformation
+Modifying existing individual columns into representations suitable for algorithmic consumption.
+* **Missing Value Imputation:**
+  - *Complete Case Analysis:* Dropping rows with null values (appropriate only when $<5\%$ of rows are missing at random).
+  - *Univariate Imputation:* Replacing `NaN` with central tendencies (Mean/Median for numerical, Mode/Constant for categorical).
+  - *Multivariate Imputation:* Predicting missing values using models (KNN Imputer, MICE / IterativeImputer).
+* **Categorical Encoding:**
+  - *One-Hot Encoding (OHE):* Converts nominal categories into $k$ or $k-1$ binary indicator columns.
+  - *Ordinal Encoding:* Maps rank-ordered categories to numeric sequences ($1, 2, 3$).
+* **Outlier Capping & Trimming:**
+  - Mitigates outlier pull on gradient-based and distance-based estimators using IQR or Z-score boundaries.
+* **Feature Scaling:**
+  - Standardizes variable ranges to prevent large-magnitude features (e.g., Salary) from dominating Euclidean distance metrics over smaller-magnitude features (e.g., Age).
+
+### Pillar 2: Feature Construction
+Deriving entirely new composite features by combining raw columns using domain logic.
+* Condenses fragmented data points into clear behavioural signals (e.g., combining `SibSp` and `Parch` into `family_size` and categorizing passengers as `Alone`, `Small_Family`, or `Large_Family`).
+
+### Pillar 3: Feature Selection
+Selecting the most informative subset of features while eliminating redundant, uninformative, or zero-variance inputs.
+* Reduces training time, prevents the curse of dimensionality, and curbs overfitting.
+* Methods include Variance Thresholding, Pearson/Spearman correlation pruning, and Recursive Feature Elimination (RFE).
+
+### Pillar 4: Feature Extraction
+Projecting a high-dimensional feature space into a lower-dimensional coordinate system.
+* Unlike feature selection (which discards columns wholesale), extraction constructs a smaller set of composite dimensions that retain the bulk of the original data's variance.
+* Core techniques include Principal Component Analysis (PCA) and Linear Discriminant Analysis (LDA).
