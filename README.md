@@ -1,40 +1,50 @@
-# Feature Engineering: Principles, Frameworks, and Core Pillars
-
----
-
-## 1. Overview & Mathematical Necessity
-* **Definition:** The process of applying domain knowledge and statistical transformations to raw data to expose clearer signals to machine learning algorithms.
-* **Core Rule:** $\text{Simple Algorithm} + \text{Engineered Features} \gg \text{Complex Algorithm} + \text{Raw Features}$.
-* Machine learning algorithms optimize mathematical cost functions over numeric feature spaces. They fail or degrade when fed unhandled missing values, raw string categoricals, multi-scale coordinate axes, or redundant uninformative dimensions.
-
----
-
-## 2. The Four Pillars of Feature Engineering
-
-### Pillar 1: Feature Transformation
-Modifying existing individual columns into representations suitable for algorithmic consumption.
-* **Missing Value Imputation:**
-  - *Complete Case Analysis:* Dropping rows with null values (appropriate only when $<5\%$ of rows are missing at random).
-  - *Univariate Imputation:* Replacing `NaN` with central tendencies (Mean/Median for numerical, Mode/Constant for categorical).
-  - *Multivariate Imputation:* Predicting missing values using models (KNN Imputer, MICE / IterativeImputer).
-* **Categorical Encoding:**
-  - *One-Hot Encoding (OHE):* Converts nominal categories into $k$ or $k-1$ binary indicator columns.
-  - *Ordinal Encoding:* Maps rank-ordered categories to numeric sequences ($1, 2, 3$).
-* **Outlier Capping & Trimming:**
-  - Mitigates outlier pull on gradient-based and distance-based estimators using IQR or Z-score boundaries.
-* **Feature Scaling:**
-  - Standardizes variable ranges to prevent large-magnitude features (e.g., Salary) from dominating Euclidean distance metrics over smaller-magnitude features (e.g., Age).
-
-### Pillar 2: Feature Construction
-Deriving entirely new composite features by combining raw columns using domain logic.
-* Condenses fragmented data points into clear behavioural signals (e.g., combining `SibSp` and `Parch` into `family_size` and categorizing passengers as `Alone`, `Small_Family`, or `Large_Family`).
-
-### Pillar 3: Feature Selection
-Selecting the most informative subset of features while eliminating redundant, uninformative, or zero-variance inputs.
-* Reduces training time, prevents the curse of dimensionality, and curbs overfitting.
-* Methods include Variance Thresholding, Pearson/Spearman correlation pruning, and Recursive Feature Elimination (RFE).
-
-### Pillar 4: Feature Extraction
-Projecting a high-dimensional feature space into a lower-dimensional coordinate system.
-* Unlike feature selection (which discards columns wholesale), extraction constructs a smaller set of composite dimensions that retain the bulk of the original data's variance.
-* Core techniques include Principal Component Analysis (PCA) and Linear Discriminant Analysis (LDA).
+ML Foundation/
+├── data/                          # Raw and processed tabular datasets
+│   ├── placement.csv
+│   ├── scraped_companies.csv
+│   └── scraped_quotes.csv
+│
+├── notebooks/                     # Interactive prototypes and exploratory notebooks
+│   └── first_toy_project.ipynb
+│
+├── artifacts/                     # Serialized models, scalers, and diagnostic reports
+│   ├── model.pkl
+│   ├── placement_model.joblib
+│   ├── scaler.pkl
+│   └── exploratory_data_profile.html
+│
+├── visualizations/                # Generated distribution curves, plots, and heatmaps
+│   ├── bivariate_lineplot.png
+│   ├── categorical_heatmap.png
+│   ├── categorical_univariate_plots.png
+│   ├── decision_boundary.png
+│   ├── hierarchical_clustermap.png
+│   ├── multivariate_pairplot.png
+│   ├── multivariate_scatter.png
+│   ├── numerical_categorical_analysis.png
+│   ├── numerical_univariate_plots.png
+│   └── placement_scatter.png
+│
+└── modules/                       # Production-oriented source modules
+    ├── foundations/               # Core theory, tensors, drift detection, and environments
+    │   ├── drift_detection_demo.py
+    │   ├── env_diagnostics.py
+    │   ├── instance_vs_model.py
+    │   └── tensor_fundamentals.py
+    │
+    ├── ingestion/                 # Web scrapers, REST APIs, and structured file loaders
+    │   ├── ambitionbox_scraper.py
+    │   ├── csv_parameters_demo.py
+    │   └── data_gathering_pipeline.py
+    │
+    ├── eda/                       # Univariate, bivariate, multivariate, and automated audits
+    │   ├── automated_data_profiler.py
+    │   ├── bivariate_multivariate_analysis.py
+    │   ├── data_understanding.py
+    │   ├── data_understanding_audit.py
+    │   └── univariate_analysis.py
+    │
+    └── feature_engineering/       # Transformations, scalers, encodings, and selections
+        ├── feature_engineering_taxonomy.py
+        ├── normalization_scaling.py
+        └── standardization_scaling.py
