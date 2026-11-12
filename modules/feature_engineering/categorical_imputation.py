@@ -46,7 +46,7 @@ df = pd.DataFrame({
 
 print(f"Dataset generated: {df.shape[0]} rows, {df.shape[1]} columns.")
 print("\nMissingness Summary:")
-print(df.isnull().sum()[df.isnull().sum() > 0])
+print(df.isnull().sum()[df.isnull().sum() > 0]) 
 print("\nProportion of nulls:")
 print((df.isnull().mean() * 100).round(2).to_dict())
 
